@@ -12,17 +12,14 @@
     <!-- Container where the visualization will be rendered -->
     <div id="vis"></div>
 
-    <script>
+    <script type="text/javascript">
         // Load the Vega-Lite JSON configuration file
-        fetch('js/primary_energy_consumption.json')
-            .then(response => response.json())
-            .then(spec => {
-                // Embed the Vega-Lite visualization in the div with id="vis"
-                vegaEmbed('#vis', spec).then(result => {
-                    // Access the Vega view instance if needed: 
-                    console.log(result.view);
-                }).catch(console.error);
-            });
+       var vg1 = 'js/primary_energy_consumption.json';
+       // Embed the Vega-Lite visualization in the div with id="vis"
+       vegaEmbed('#vis', spec).then(result => {
+           // Access the Vega view instance if needed: 
+           // console.log(result.view);
+       }).catch(console.error);
     </script>
 </body>
 </html>
