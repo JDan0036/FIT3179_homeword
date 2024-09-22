@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Primary Energy Consumption (2021)",
-  "width": 1200,
-  "height": 600,
+  "width": 800,
+  "height": 400,
   "projection": {"type": "equalEarth"},
   "layer": [
     {
