@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Primary Energy Consumption (for Selected Year)",
-  "width": 800,
+  "title": "Primary Energy Consumption for 2021",
+  "width": 650,
   "height": 400,
   "projection": {"type": "equalEarth"},
   "layer": [
@@ -37,18 +37,15 @@
       },
       "transform": [
         {
-          "lookup": "properties.ISO_A3",
+          "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/FIT3179%20Homework%2010/Dataset/primary-energy-cons.csv",
+              "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/FIT3179%20Homework%2010/Dataset/primary-energy-cons-2021.csv",
               "format": {"type": "csv"}
             },
-            "key": "code",
-            "fields": ["year", "primary_energy_consumption"]
+            "key": "countries",
+            "fields": ["primary_energy_consumption"]
           }
-        },
-        {
-          "filter": "datum.year == 2023"
         }
       ],
       "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
