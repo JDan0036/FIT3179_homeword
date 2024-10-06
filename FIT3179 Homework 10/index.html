@@ -96,7 +96,10 @@
     var specVis1 = 'js/primary_energy_consumption.json';
     var specVis2 = 'js/global_energy_source.json';
 
-    vegaEmbed('#vis1', specVis1, { "actions": false });
+    vegaEmbed('#vis1', specVis1).then(result => {
+        // Access the Vega view instance if needed: 
+        console.log(result.view);
+    }).catch(console.error);
    
     vegaEmbed('#vis2', specVis2).then(result => {
         // Access the Vega view instance if needed: 
