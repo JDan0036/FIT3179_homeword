@@ -1,4 +1,6 @@
 {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Global primary energy consumption by source (2021)",
   "width": 500,
   "height": 400,
   "data": {
