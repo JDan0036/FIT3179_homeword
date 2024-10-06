@@ -16,27 +16,6 @@
       },
       "transform": [
         {
-          "calculate": "'Data is not available in ' + datum.properties.NAME",
-          "as": "note"
-        }
-      ],
-      "mark": {
-        "type": "geoshape",
-        "fill": "#ddd",
-        "stroke": "black",
-        "strokeWidth": 0.5
-      },
-      "encoding": {
-        "tooltip": { "field": "note" }
-      }
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/FIT3179%20Homework%2010/js/ne_110m_30grat.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "transform": [
-        {
           "lookup": "properties.NAME",
           "from": {
             "data": {
