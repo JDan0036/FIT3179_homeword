@@ -9,17 +9,25 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
 </head>
 <body>
-    <!-- Container where the visualization will be rendered -->
-    <div id="vis"></div>
+    <!-- Container for the first visualization -->
+    <div id="vis1"></div>
+    <!-- Container for the second visualization -->
+    <div id="vis2"></div>
 
     <script type="text/javascript">
-        // Load the Vega-Lite JSON configuration file
-       var vg1 = 'js/primary_energy_consumption.json';
-       // Embed the Vega-Lite visualization in the div with id="vis"
-       vegaEmbed('#vis', vg1).then(result => {
-           // Access the Vega view instance if needed: 
-           // console.log(result.view);
-       }).catch(console.error);
+        // Load the first Vega-Lite JSON configuration file
+        var vg1 = 'js/primary_energy_consumption.json';
+        vegaEmbed('#vis1', vg1).then(result => {
+            // Access the Vega view instance if needed: 
+            // console.log(result.view);
+        }).catch(console.error);
+
+        // Load the second Vega-Lite JSON configuration file
+        var vg2 = 'js/global_energy_source.json';
+        vegaEmbed('#vis2', vg2).then(result => {
+            // Access the Vega view instance if needed: 
+            // console.log(result.view);
+        }).catch(console.error);
     </script>
 </body>
 </html>
