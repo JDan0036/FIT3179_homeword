@@ -1,0 +1,168 @@
+{
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/FIT3179%20Homework%2010/Dataset/global-energy-substitution.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "Other renewables (TWh, substituted energy)",
+        "Biofuels (TWh, substituted energy)",
+        "Solar (TWh, substituted energy)",
+        "Wind (TWh, substituted energy)",
+        "Hydropower (TWh, substituted energy)",
+        "Nuclear (TWh, substituted energy)",
+        "Gas (TWh, substituted energy)",
+        "Oil (TWh, substituted energy)",
+        "Coal (TWh, substituted energy)",
+        "Traditional biomass (TWh, substituted energy)"
+      ],
+      "as": ["Energy Source", "Substituted Energy (TWh)"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "area",
+      "selection": {
+        "energySource": {
+          "type": "multi",
+          "fields": ["Energy Source"],
+          "bind": "legend"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "format": "%Y"
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Substituted Energy (TWh)",
+          "type": "quantitative",
+          "title": "Substituted Energy (TWh)"
+        },
+        "color": {
+          "field": "Energy Source",
+          "type": "nominal",
+          "scale": {
+            "scheme": "category20b"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "selection": "energySource",
+            "value": 1
+          },
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year",
+            "timeUnit": "year"
+          },
+          {
+            "field": "Energy Source",
+            "type": "nominal",
+            "title": "Energy Source"
+          },
+          {
+            "field": "Substituted Energy (TWh)",
+            "type": "quantitative",
+            "title": "Substituted Energy (TWh)",
+            "format": ",.2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": {
+          "datum": {"year": 1900}, 
+          "type": "temporal"
+        }
+      },
+      "color": {
+        "value": "red"
+      },
+      "size": {
+        "value": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 140,
+        "dy": 0,
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "datum": "1850-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 60000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "In the 19th century, traditional biomass"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 140,
+        "dy": 0,
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "datum": "1850-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 53000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "was the primary source."
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 140,
+        "dy": 0,
+        "fontSize": 12,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "datum": "1850-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 46000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "However, coal use increased slowly over time."
+        }
+      }
+    }
+  ]
+}
