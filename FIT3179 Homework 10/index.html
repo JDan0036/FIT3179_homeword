@@ -65,14 +65,14 @@
       <div class="pure-u-1-1">
         <div class="description description-right">
           <h2>Explaining Global Energy Substitution Over Time</h2>
-<p>This area chart visualizes the global shift in energy sources from the 19th century to 2023. It highlights the growth and substitution of various energy types over time, measured in terawatt-hours (TWh).</p>
+          <p>This area chart visualizes the global shift in energy sources from the 19th century to 2023. It highlights the growth and substitution of various energy types over time, measured in terawatt-hours (TWh).</p>
 
-<h3>Key Insights</h3>
-<ul>
-  <li><strong>Traditional Biomass Dominance (Pre-1900):</strong> In the early years, traditional biomass, such as wood, was the dominant energy source. Coal began to gain traction slowly during the late 1800s.</li>
-  <li><strong>Industrialization Era (1900-1960):</strong> The use of coal grew significantly during the early 20th century as industrialization spread globally, with oil and gas joining the mix by mid-century.</li>
-  <li><strong>Modern Energy Mix (Post-1960):</strong> Post-1960 saw rapid growth in oil and gas usage, while nuclear energy emerged in the 1970s. In recent decades, renewable sources like wind, solar, and biofuels have seen substantial growth.</li>
-</ul>
+          <h3>Key Insights</h3>
+          <ul>
+            <li><strong>Traditional Biomass Dominance (Pre-1900):</strong> In the early years, traditional biomass, such as wood, was the dominant energy source. Coal began to gain traction slowly during the late 1800s.</li>
+            <li><strong>Industrialization Era (1900-1960):</strong> The use of coal grew significantly during the early 20th century as industrialization spread globally, with oil and gas joining the mix by mid-century.</li>
+            <li><strong>Modern Energy Mix (Post-1960):</strong> Post-1960 saw rapid growth in oil and gas usage, while nuclear energy emerged in the 1970s. In recent decades, renewable sources like wind, solar, and biofuels have seen substantial growth.</li>
+          </ul>
         </div>
       </div>
       <div class="pure-u-1-1">
@@ -81,10 +81,27 @@
     </div>
     <!-- end pure grid group -->
 
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="description description-right">
+          <h2>Explaining Renewable Energy Ranking Over Time</h2>
+          <p>This bump chart provides a clear view of how different North American countries rank in terms of their hydropower energy consumption over time, from 1980 to 2023. It highlights the changes and stability in the relative consumption of hydropower among these countries, emphasizing their positions rather than their exact consumption values. You are able to interact with the visualisation to see the <b>rankings</b> across the years for <b>different continents</b></p>
+        </div>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="vis3" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by Jobin Mathew Dan (32871953). The datasource is <a href="https://ourworldindata.org/grapher/global-energy-substitution?tab=table&time=earliest..2023" target=" _blank">Global primary energy consumption by source</href></a>
-          and <a href="https://ourworldindata.org/grapher/primary-energy-cons?tab=table" target=" _blank">Primary Energy Conumption</href></a>.</p>
+        <p>This visualisation is created by Jobin Mathew Dan (32871953). The datasource is: <ol type="1">
+          <li><a href="https://ourworldindata.org/grapher/global-energy-substitution?tab=table&time=earliest..2023" target=" _blank">Global primary energy consumption by source</href></a></li>
+          <li><a href="https://ourworldindata.org/grapher/primary-energy-cons?tab=table" target=" _blank">Primary Energy Conumption</href></a>.</p></li>
+          <li><a href="https://ourworldindata.org/grapher/energy-consumption-by-source-and-country?tab=table&country=~MYS" target=" _blank">Energy Consumption by source</href></a>.</p></li>
+        </ol> 
       </div>
     </div>
 
@@ -95,6 +112,7 @@
     // Load the first Vega-Lite JSON configuration file
     var specVis1 = 'js/primary_energy_consumption.json';
     var specVis2 = 'js/global_energy_source.json';
+    var specVis3 = 'js/energy_consumption_by_source_and_country.json';
 
     vegaEmbed('#vis1', specVis1).then(result => {
         // Access the Vega view instance if needed: 
@@ -102,6 +120,11 @@
     }).catch(console.error);
    
     vegaEmbed('#vis2', specVis2).then(result => {
+        // Access the Vega view instance if needed: 
+        console.log(result.view);
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3).then(result => {
         // Access the Vega view instance if needed: 
         console.log(result.view);
     }).catch(console.error);

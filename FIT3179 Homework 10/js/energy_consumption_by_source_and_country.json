@@ -1,37 +1,105 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Bump chart",
-    "height": 240,
-    "width": 400,
-    "encoding": {
-      "x": {"field": "Year", "type": "ordinal"},
-      "y": {
-        "field": "Rank",
-        "type": "ordinal",
-        "scale": {"domain": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "range": [5, 34]}
-      },
-      "color": {"field": "Color", "type": "nominal"},
-      "time": {
-        "field": "Year",
-        "scale": {"type": "band", "range": {"step": 500}},
-        "key": {"field": "Color"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
+  "title": "Energy Consumption (Using Hydropower) by Source and Continent",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/FIT3179%20Homework%2010/Dataset/energy-consumption-by-source-and-country.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "value": "North America",
+      "bind": {
+        "input": "select",
+        "options": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum['Hydro consumption - TWh'] != null"
+    },
+    {
+      "filter": "datum.Continent == Continent_selection"
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "Rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "Coal consumption - TWh",
+          "order": "descending"
+        }
+      ],
+      "groupby": ["Year", "Continent"]
+    },
+    {
+      "filter": "datum.Rank <= 5"
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {
+        "labelAngle": 0,
+        "title": "Year",
+        "step": 2
       }
     },
-    "mark": {"type": "line", "interpolate": "cardinal", "point": true},
-    "params": [
-      {
-        "name": "anim_sel",
-        "select": {
-          "type": "point",
-          "on": "timer",
-          "predicate": {"field": "Year", "lte": {"expr": "anim_value"}}
-        }
+    "y": {
+      "field": "Rank",
+      "type": "quantitative",
+      "scale": {
+        "reverse": true,
+        "domain": [0, 5],
+        "nice": false
+      },
+      "axis": {
+        "title": "Rank",
+        "tickCount": 6,
+        "values": [0, 1, 2, 3, 4, 5]
       }
-    ],
-    "transform": [
-      {"calculate": "toNumber(datum.Year)", "as": "Year"},
-      {"calculate": "toNumber(datum.Rank)", "as": "Rank"},
-      {"filter": {"param": "anim_sel"}}
-    ],
-    "data": {"url": "data/bump.csv"}
+    },
+    "color": {
+      "field": "Entity",
+      "type": "nominal",
+      "legend": {
+        "title": "Country",
+        "symbolLimit": 10
+      },
+      "condition": {
+        "test": "datum.Rank <= 10 && datum.Year == 2023",
+        "value": null
+      }
+    },
+    "tooltip": [
+      { "field": "Entity", "type": "nominal", "title": "Country" },
+      { "field": "Year", "type": "temporal", "title": "Year", "format": "%Y" },
+      { "field": "Rank", "type": "quantitative", "title": "Rank" },
+      { "field": "Coal consumption - TWh", "type": "quantitative", "title": "Hydro Consumption (TWh)" }
+    ]
   }
+}
