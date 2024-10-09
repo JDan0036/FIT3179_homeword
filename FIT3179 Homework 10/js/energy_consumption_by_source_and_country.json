@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
-  "height": 300,
+  "width": 250,
+  "height": 200,
   "title": "Energy Consumption (Using Hydropower) by Source and Continent",
   "data": {
     "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/FIT3179%20Homework%2010/Dataset/energy-consumption-by-source-and-country.csv"
