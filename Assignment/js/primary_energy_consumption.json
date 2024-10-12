@@ -33,7 +33,7 @@
           "field": "primary_energy_consumption",
           "type": "quantitative",
           "scale": {
-            "type": "threshold",
+            "type": "log",
             "domain": [1,100000],
             "range": [
               "#FFFFCC",
