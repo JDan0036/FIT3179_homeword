@@ -73,6 +73,10 @@
     },
     {
       "filter": "datum['Continent'] != '0' && datum['Continent'] != null"
+    },
+    {
+      "calculate": "replace(datum['Energy Source'], ' - TWh Rank', '')",
+      "as": "Energy Source Clean"
     }
   ],
   "layer": [
@@ -157,7 +161,7 @@
           {"field": "Entity", "type": "nominal", "title": "Country"},
           {"field": "Year", "type": "temporal", "format": "%Y"},
           {"field": "Rank", "type": "quantitative", "title": "Rank"},
-          {"field": "Energy Source", "type": "nominal", "title": "Energy Source"},
+          {"field": "Energy Source Clean", "type": "nominal", "title": "Energy Source"},
           {"field": "Continent", "type": "nominal", "title": "Continent"}
         ]
       }
