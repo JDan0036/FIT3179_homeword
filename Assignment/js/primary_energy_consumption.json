@@ -34,7 +34,7 @@
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "domain": [1,100000],
+            "domain": [1,200000],
             "range": [
               "#FFFFCC",
               "#C7E9B4",
