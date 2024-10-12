@@ -34,16 +34,7 @@
           "type": "quantitative",
           "scale": {
             "type": "log",
-            "domain": [1,200000],
-            "range": [
-              "#FFFFCC",
-              "#C7E9B4",
-              "#7FCDBB",
-              "#41B6C4",
-              "#1D91C0",
-              "#225EA8",
-              "#0C2C84"
-            ]
+            "domain": [1,100000]
           },
           "legend": {"title": "Energy Consumption (TWh)", "gradientLength": 200}
         },
