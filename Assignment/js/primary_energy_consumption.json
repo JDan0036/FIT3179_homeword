@@ -36,13 +36,13 @@
             "type": "log",
             "domain": [1,200000],
             "range": [
-              "#feebe2",
-              "#fcc5c0",
-              "#fa9fb5",
-              "#f768a1",
-              "#dd3497",
-              "#ae017e",
-              "#7a0177"
+              "#FFFFCC",
+              "#C7E9B4",
+              "#7FCDBB",
+              "#41B6C4",
+              "#1D91C0",
+              "#225EA8",
+              "#0C2C84"
             ]
           },
           "legend": {"title": "Energy Consumption (TWh)", "gradientLength": 200}

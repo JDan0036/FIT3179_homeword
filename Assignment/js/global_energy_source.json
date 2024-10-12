@@ -1,4 +1,5 @@
 {
+  "title": "Global Energy Substitution versus Time",
   "width": 600,
   "height": 400,
   "data": {
@@ -101,8 +102,7 @@
         "align": "center",
         "dx": 140,
         "dy": 0,
-        "fontSize": 12,
-        "fontStyle": "italic"
+        "fontSize": 12
       },
       "encoding": {
         "x": {
@@ -124,8 +124,7 @@
         "align": "center",
         "dx": 140,
         "dy": 0,
-        "fontSize": 12,
-        "fontStyle": "italic"
+        "fontSize": 12
       },
       "encoding": {
         "x": {
@@ -147,8 +146,7 @@
         "align": "center",
         "dx": 140,
         "dy": 0,
-        "fontSize": 12,
-        "fontStyle": "italic"
+        "fontSize": 12
       },
       "encoding": {
         "x": {

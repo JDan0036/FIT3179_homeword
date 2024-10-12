@@ -1,105 +1,165 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 250,
-  "height": 200,
-  "title": "Energy Consumption (Using Hydropower) by Source and Continent",
+  "description": "Bump chart showing ranking of countries over time for selected energy source, colored by continent, with dots for each year and hover interaction.",
+  "height": 250,
+  "width": 380,
   "data": {
-    "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/FIT3179%20Homework%2010/Dataset/energy-consumption-by-source-and-country.csv"
+    "url": "Dataset/energy_consumption.csv",
+    "format": {
+      "type": "csv"
+    }
   },
   "params": [
     {
-      "name": "Continent_selection",
-      "value": "North America",
+      "name": "energy_selection",
+      "value": "Biofuels consumption - TWh Rank",
       "bind": {
         "input": "select",
         "options": [
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
+          "Biofuels consumption - TWh Rank",
+          "Solar consumption - TWh Rank",
+          "Wind consumption - TWh Rank",
+          "Hydro consumption - TWh Rank",
+          "Nuclear consumption - TWh Rank",
+          "Gas consumption - TWh Rank",
+          "Coal consumption - TWh Rank",
+          "Oil consumption - TWh Rank"
         ],
         "labels": [
-          "North America",
-          "South America",
-          "Europe",
-          "Africa",
-          "Asia",
-          "Oceania"
+          "Biofuels",
+          "Solar",
+          "Wind",
+          "Hydro",
+          "Nuclear",
+          "Gas",
+          "Coal",
+          "Oil"
         ],
-        "name": "Continent Selection: "
+        "name": "Select Energy Source: "
+      }
+    },
+    {
+      "name": "Top_Ranks",
+      "value": 5,
+      "bind": {
+        "name": "Top Ranks",
+        "input": "range",
+        "min": 3,
+        "max": 15,
+        "step": 1
       }
     }
   ],
   "transform": [
     {
-      "filter": "datum['Hydro consumption - TWh'] != null"
-    },
-    {
-      "filter": "datum.Continent == Continent_selection"
-    },
-    {
-      "window": [
-        {
-          "op": "rank",
-          "as": "Rank"
-        }
+      "fold": [
+        "Biofuels consumption - TWh Rank",
+        "Solar consumption - TWh Rank",
+        "Wind consumption - TWh Rank",
+        "Hydro consumption - TWh Rank",
+        "Nuclear consumption - TWh Rank",
+        "Gas consumption - TWh Rank",
+        "Coal consumption - TWh Rank",
+        "Oil consumption - TWh Rank"
       ],
-      "sort": [
-        {
-          "field": "Coal consumption - TWh",
-          "order": "descending"
-        }
-      ],
-      "groupby": ["Year", "Continent"]
+      "as": ["Energy Source", "Rank"]
     },
     {
-      "filter": "datum.Rank <= 5"
+      "filter": "datum['Energy Source'] == energy_selection"
+    },
+    {
+      "filter": "datum['Rank'] <= Top_Ranks && datum['Rank'] > 0"
+    },
+    {
+      "filter": "datum['Continent'] != '0' && datum['Continent'] != null"
     }
   ],
-  "mark": "line",
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "temporal",
-      "axis": {
-        "labelAngle": 0,
-        "title": "Year",
-        "step": 2
-      }
-    },
-    "y": {
-      "field": "Rank",
-      "type": "quantitative",
-      "scale": {
-        "reverse": true,
-        "domain": [0, 5],
-        "nice": false
+  "layer": [
+    {
+      "mark": "line",
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "on": "mouseover",
+          "empty": "none",
+          "fields": ["Entity"]
+        }
       },
-      "axis": {
-        "title": "Rank",
-        "tickCount": 6,
-        "values": [0, 1, 2, 3, 4, 5]
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "title": "Year"
+          }
+        },
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+          "scale": {"reverse": true}, 
+          "axis": {
+            "title": "Rank"
+          }
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "legend": {
+            "title": {"expr": "energy_selection.replace(' consumption - TWh Rank', '')"}
+          },
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": "black"
+          }
+        },
+        "opacity": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0.2
+        },
+        "detail": {"field": "Entity"}
       }
     },
-    "color": {
-      "field": "Entity",
-      "type": "nominal",
-      "legend": {
-        "title": "Country",
-        "symbolLimit": 10
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 60
       },
-      "condition": {
-        "test": "datum.Rank <= 10 && datum.Year == 2023",
-        "value": null
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Rank",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "legend": {
+            "title": {"expr": "energy_selection.replace(' consumption - TWh Rank', '')"}
+          },
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": "black"
+          }
+        },
+        "opacity": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0.2
+        },
+        "detail": {"field": "Entity"},
+        "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "Year", "type": "temporal", "format": "%Y"},
+          {"field": "Rank", "type": "quantitative", "title": "Rank"},
+          {"field": "Energy Source", "type": "nominal", "title": "Energy Source"},
+          {"field": "Continent", "type": "nominal", "title": "Continent"}
+        ]
       }
-    },
-    "tooltip": [
-      { "field": "Entity", "type": "nominal", "title": "Country" },
-      { "field": "Year", "type": "temporal", "title": "Year", "format": "%Y" },
-      { "field": "Rank", "type": "quantitative", "title": "Rank" },
-      { "field": "Coal consumption - TWh", "type": "quantitative", "title": "Hydro Consumption (TWh)" }
-    ]
-  }
+    }
+  ]
 }
