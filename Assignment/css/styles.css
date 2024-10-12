@@ -1,3 +1,7 @@
+title {
+    font-family: serif;
+}
+
 body *{
     font-family: 'Open Sans', sans-serif;
 }
@@ -29,6 +33,7 @@ h1 {
 
 .description-right {
     padding-left: 20px;
+    max-width: 90%; /* Reduce the text width further if needed */
 }
 
 .description-left {
@@ -41,4 +46,12 @@ h1 {
 
 .small-font {
     font-size: 14px;
+}
+
+.pure-u-1-2 {
+    width: 40%; /* Decrease text container width */
+}
+
+#vis3 {
+    width: 60%; /* Increase visualization container width */
 }
