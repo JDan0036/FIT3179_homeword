@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Primary Energy Consumption for 2021",
-  "width": 600,
-  "height": 400,
+  "width": 800,
+  "height": 450,
   "projection": {"type": "equalEarth"},
   "layer": [
     {
@@ -45,7 +45,7 @@
               "#0C2C84"
             ]
           },
-          "legend": {"title": "Energy Consumption (TWh)", "gradientLength": 200}
+          "legend": {"title": "Energy Consumption (TWh)", "gradientLength": 200, "orient": "bottom"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},

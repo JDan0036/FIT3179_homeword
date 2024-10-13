@@ -1,14 +1,5 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 400,
-    "width": 750,
-    "data": {
-      "url": "Dataset/co-emissions-per-capita-continent.csv",
-      "format": {
-        "type": "csv"
-      }
-    },
-    "mark": {"type": "line", "point": true},
     "params": [
       {
         "name": "minYear",
@@ -33,28 +24,119 @@
         }
       }
     ],
-    "transform": [
+    "hconcat": [
       {
-        "filter": "datum.Year == minYear || datum.Year == maxYear"
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "ordinal",
-        "axis": {"title": "Year"}
+        "title": "Annual CO₂ Emissions per Capita by Region",
+        "height": 200,
+        "width": 300,
+        "data": {
+          "url": "Dataset/co-emissions-per-capita-continent.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "mark": {"type": "line", "point": true},
+        "transform": [
+          {
+            "filter": "datum.Year == minYear || datum.Year == maxYear"
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "axis": {"title": "Year"}
+          },
+          "y": {
+            "field": "Annual CO2 Emissions (per capita)",
+            "type": "quantitative",
+            "axis": {"title": "Annual CO2 Emissions (per capita)"}
+          },
+          "color": {
+            "field": "Entity",
+            "type": "nominal",
+            "legend": {
+              "title": "Region",
+              "orient": "bottom",
+              "columns": 3,
+              "direction": "horizontal"
+            }
+          },
+          "tooltip": [
+            {"field": "Entity", "type": "nominal", "title": "Region"},
+            {"field": "Year", "type": "ordinal"},
+            {"field": "Annual CO2 Emissions (per capita)", "type": "quantitative"}
+          ]
+        }
       },
-      "y": {
-        "field": "Annual CO2 Emissions (per capita)",
-        "type": "quantitative",
-        "axis": {"title": "Annual CO2 Emissions (per capita)"}
-      },
-      "color": {
-        "field": "Entity",
-        "type": "nominal",
-        "legend": {"title": "Region"}
+      {
+        "title": "Change in CO₂ Emissions (Red: Loss, White: Near 0, Blue: Gain)",
+        "height": 200,
+        "width": 300,
+        "data": {
+          "url": "Dataset/co-emissions-per-capita-continent.csv",
+          "format": {
+            "type": "csv"
+          }
+        },
+        "mark": "bar",
+        "transform": [
+          {
+            "filter": "datum.Year == minYear || datum.Year == maxYear"
+          },
+          {
+            "window": [
+              {
+                "op": "first_value",
+                "field": "Annual CO2 Emissions (per capita)",
+                "as": "CO2_minYear"
+              },
+              {
+                "op": "last_value",
+                "field": "Annual CO2 Emissions (per capita)",
+                "as": "CO2_maxYear"
+              }
+            ],
+            "groupby": ["Entity"]
+          },
+          {
+            "calculate": "datum.CO2_maxYear - datum.CO2_minYear",
+            "as": "CO2_change"
+          },
+          {
+            "sort": [{"field": "CO2_change", "order": "descending"}]
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "CO2_change",
+            "type": "quantitative",
+            "axis": {"title": "Change in CO2 Emissions (per capita)"}
+          },
+          "y": {
+            "field": "Entity",
+            "type": "nominal",
+            "axis": {"title": "Region"},
+            "sort": "-x"
+          },
+          "color": {
+            "field": "CO2_change",
+            "type": "quantitative",
+            "scale": {
+              "domain": [-10, 0, 10],
+              "range": ["red", "white", "blue"]
+            },
+            "legend": {
+              "title": "Change in CO2",
+              "orient": "bottom"
+            }
+          },
+          "tooltip": [
+            {"field": "Entity", "type": "nominal", "title": "Region"},
+            {"field": "CO2_change", "type": "quantitative", "title": "CO2 Change"}
+          ]
+        }
       }
-    },
-    "title": "Annual CO₂ Emissions per Capita by Region"
+    ]
   }
   
