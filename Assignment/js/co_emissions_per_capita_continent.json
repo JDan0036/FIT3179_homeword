@@ -30,7 +30,7 @@
         "height": 200,
         "width": 300,
         "data": {
-          "url": "Dataset/co-emissions-per-capita-continent.csv",
+          "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/co-emissions-per-capita-continent.csv",
           "format": {
             "type": "csv"
           }
@@ -74,7 +74,7 @@
         "height": 200,
         "width": 300,
         "data": {
-          "url": "Dataset/co-emissions-per-capita-continent.csv",
+          "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/co-emissions-per-capita-continent.csv",
           "format": {
             "type": "csv"
           }
