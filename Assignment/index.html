@@ -102,6 +102,22 @@
     </div>
     <!-- end pure grid group -->
 
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="description description-right">
+          <h2>Explaining CO2 emissions over time</h2>
+          <p>This area chart visualizes the global shift in energy sources from the 19th century to 2023. It highlights the growth and substitution of various energy types over time, measured in terawatt-hours (TWh). By clicking on the legend, you can filter specific energy sources to focus on the ones you're most interested in.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-1">
+        <div id="vis5" class="vis-container"></div>
+      </div>
+    </div>
+
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
         <p>This visualisation is created by Jobin Mathew Dan (32871953). The datasource is: <ol type="1">
@@ -120,6 +136,8 @@
     var specVis1 = 'js/primary_energy_consumption.json';
     var specVis2 = 'js/global_energy_source.json';
     var specVis3 = 'js/energy_consumption_by_source_and_country.json';
+    var specVis4 = 'js/co_emissions_per_capita_continent.json';
+    var specVis5 = 'js/diverging.json';
 
     vegaEmbed('#vis1', specVis1).then(result => {
         // Access the Vega view instance if needed: 
@@ -132,6 +150,16 @@
     }).catch(console.error);
 
     vegaEmbed('#vis3', specVis3).then(result => {
+        // Access the Vega view instance if needed: 
+        console.log(result.view);
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4).then(result => {
+        // Access the Vega view instance if needed: 
+        console.log(result.view);
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5).then(result => {
         // Access the Vega view instance if needed: 
         console.log(result.view);
     }).catch(console.error);

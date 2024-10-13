@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 400,
+    "width": 750,
+    "data": {
+      "url": "Dataset/co-emissions-per-capita-continent.csv",
+      "format": {
+        "type": "csv"
+      }
+    },
+    "mark": {"type": "line", "point": true},
+    "params": [
+      {
+        "name": "minYear",
+        "value": 1990,
+        "bind": {
+          "input": "range",
+          "min": 1990,
+          "max": 2022,
+          "step": 1,
+          "name": "Minimum Year: "
+        }
+      },
+      {
+        "name": "maxYear",
+        "value": 2022,
+        "bind": {
+          "input": "range",
+          "min": 1990,
+          "max": 2022,
+          "step": 1,
+          "name": "Maximum Year: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.Year == minYear || datum.Year == maxYear"
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "axis": {"title": "Year"}
+      },
+      "y": {
+        "field": "Annual CO2 Emissions (per capita)",
+        "type": "quantitative",
+        "axis": {"title": "Annual CO2 Emissions (per capita)"}
+      },
+      "color": {
+        "field": "Entity",
+        "type": "nominal",
+        "legend": {"title": "Region"}
+      }
+    },
+    "title": "Annual CO₂ Emissions per Capita by Region"
+  }
+  
