@@ -1,61 +1,42 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Primary Energy Consumption for 2021",
-  "width": 800,
-  "height": 450,
+  "width": "container",
+  "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/Assignment/js/ne_110m_admin_0_countries.json",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
   "projection": {"type": "equalEarth"},
+  "params": [
+    {
+      "name": "year_selection",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 1985,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
   "layer": [
     {
-      "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "#cde5f7", "stroke": null}
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
+        }
+      ],
+      "mark": { "type": "geoshape", "fill": "lightgrey", "stroke":"white"},
+      "encoding": {"tooltip":{"field":"note"}}
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/Assignment/js/ne_110m_30grat.json",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+        "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/js/oceans.topojson",
+        "format": { "type": "topojson", "feature": "oceans" }
       },
-      "transform": [
-        {
-          "lookup": "properties.NAME",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/Assignment/Dataset/primary-energy-cons-2021.csv",
-              "format": {"type": "csv"}
-            },
-            "key": "countries",
-            "fields": ["primary_energy_consumption"]
-          }
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
-      "encoding": {
-        "color": {
-          "field": "primary_energy_consumption",
-          "type": "quantitative",
-          "scale": {
-            "type": "log",
-            "domain": [1,200000],
-            "range": [
-              "#FFFFCC",
-              "#C7E9B4",
-              "#7FCDBB",
-              "#41B6C4",
-              "#1D91C0",
-              "#225EA8",
-              "#0C2C84"
-            ]
-          },
-          "legend": {"title": "Energy Consumption (TWh)", "gradientLength": 200, "orient": "bottom"}
-        },
-        "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {
-            "field": "primary_energy_consumption",
-            "type": "quantitative",
-            "title": "Energy Consumption (TWh)"
-          }
-        ]
-      }
+      "mark": { "type": "geoshape", "fill": "skyblue" }
     },
     {
       "data": {
@@ -68,7 +49,95 @@
         "stroke": "lightgray",
         "strokeWidth": 0.5
       }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.ISO_A3",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/energy_per_100000_population.csv"
+            },
+            "key": "code",
+            "fields": [
+              "1985",
+              "1986",
+              "1987",
+              "1988",
+              "1989",
+              "1990",
+              "1991",
+              "1992",
+              "1993",
+              "1994",
+              "1995",
+              "1996",
+              "1997",
+              "1998",
+              "1999",
+              "2000",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022"
+            ]
+          }
+        },
+        {
+          "filter": "toNumber(datum[year_selection]) != null && datum[year_selection] != '' && datum[year_selection] > 0"
+        },
+        {
+          "calculate": "toNumber(datum[year_selection])",
+          "as": "primary_energy_consumption"
+        }
+      ],
+      "mark": { "type": "geoshape", "stroke": "white" },
+      "encoding": {
+        "color": {
+          "field": "primary_energy_consumption",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [0,1,2,4,8,16,32,64],
+            "range": [
+              "#FFFFCC",
+              "#C7E9B4",
+              "#7FCDBB",
+              "#41B6C4",
+              "#1D91C0",
+              "#225EA8",
+              "#0C2C84"
+            ]
+          },
+          "legend": {"title": "Energy Consumption (TWh)", "orient": "bottom"}
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {
+            "field": "primary_energy_consumption",
+            "type": "quantitative",
+            "title": "Energy Consumption (TWh)"
+          }
+        ]
+      }
     }
-  ],
-  "config": {}
+  ]
 }

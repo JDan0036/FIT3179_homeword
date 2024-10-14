@@ -1,6 +1,7 @@
 {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Global Energy Substitution versus Time",
-  "width": 600,
+  "width": "container",
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/FIT3179%20Homework%2010/Dataset/global-energy-substitution.csv"
@@ -20,6 +21,10 @@
         "Traditional biomass (TWh, substituted energy)"
       ],
       "as": ["Energy Source", "Substituted Energy (TWh)"]
+    },
+    {
+      "calculate": "replace(datum['Energy Source'], ' (TWh, substituted energy)', '')",
+      "as": "Cleaned Energy Source"
     }
   ],
   "layer": [
@@ -28,7 +33,7 @@
       "selection": {
         "energySource": {
           "type": "multi",
-          "fields": ["Energy Source"],
+          "fields": ["Cleaned Energy Source"],
           "bind": "legend"
         }
       },
@@ -47,10 +52,13 @@
           "title": "Substituted Energy (TWh)"
         },
         "color": {
-          "field": "Energy Source",
+          "field": "Cleaned Energy Source",
           "type": "nominal",
           "scale": {
-            "scheme": "category20b"
+            "scheme": "dark2"
+          },
+          "legend": {
+            "orient": "bottom"
           }
         },
         "opacity": {
@@ -68,7 +76,7 @@
             "timeUnit": "year"
           },
           {
-            "field": "Energy Source",
+            "field": "Cleaned Energy Source",
             "type": "nominal",
             "title": "Energy Source"
           },
@@ -164,3 +172,4 @@
     }
   ]
 }
+  

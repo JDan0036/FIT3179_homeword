@@ -3,7 +3,7 @@
   "title": "Ranking of countries over time for selected energy source",
   "description": "Bump chart showing ranking of countries over time for selected energy source, colored by continent, with dots for each year and hover interaction.",
   "height": 250,
-  "width": 380,
+  "width": "container",
   "data": {
     "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/energy_consumption.csv",
     "format": {

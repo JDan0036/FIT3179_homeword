@@ -1,57 +1,61 @@
-title {
-    font-family: serif;
-}
-
-body *{
-    font-family: 'Open Sans', sans-serif;
-}
-
-h1 {
-    font-weight: 900;
-}
-
 body {
-    background-color: lightgray;
-}
+    background-color: #F8F8F8;
+    background-image: url('https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/background.png');
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 50px;
+  }
 
-.page {
-    width: 850px;
-    background-color: white;
-    margin: auto;
-    padding: 50px;
-    padding-top: 35px;
-}
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-.vis-container {
-    width: 100%;
-}
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+  }
 
-.description h2,
-h1 {
-    margin-top: 0px;
-}
+  .card-title{
+    background-color: #C5CFE7;
+    text-align: center;
+    font-style: bold;
+    border-radius: 10px;
+  }
 
-.description-right {
-    padding-left: 20px;
-    max-width: 90%; /* Reduce the text width further if needed */
-}
+  .card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
 
-.description-left {
-    padding-right: 20px;
-}
+  h1, h2 {
+    font-family: 'Times New Roman', Times, serif;
+  }
 
-.pure-g {
-    margin-bottom: 40px;
-}
+  h1 {
+    font-size: 32pt;
+    margin-bottom: 10px;
+  }
 
-.small-font {
-    font-size: 14px;
-}
+  h2 {
+    font-size: 24pt;
+    margin-bottom: 10px;
+  }
 
-.pure-u-1-2 {
-    width: 40%; /* Decrease text container width */
-}
+  p {
+    font-size: 14pt;
+    line-height: 1.6;
+  }
 
-#vis3 {
-    width: 60%; /* Increase visualization container width */
-}
+  .vis-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .small-font {
+    font-size: 12pt;
+  }

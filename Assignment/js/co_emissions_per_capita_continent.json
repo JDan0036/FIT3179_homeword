@@ -27,7 +27,7 @@
     "hconcat": [
       {
         "title": "Annual CO₂ Emissions per Capita by Region",
-        "height": 200,
+        "height": 250,
         "width": 300,
         "data": {
           "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/co-emissions-per-capita-continent.csv",
@@ -71,7 +71,7 @@
       },
       {
         "title": "Change in CO₂ Emissions (Red: Loss, White: Near 0, Blue: Gain)",
-        "height": 200,
+        "height": 250,
         "width": 300,
         "data": {
           "url": "https://raw.githubusercontent.com/JDan0036/FIT3179_homeword/refs/heads/main/Assignment/Dataset/co-emissions-per-capita-continent.csv",
@@ -137,6 +137,7 @@
           ]
         }
       }
-    ]
+    ],
+    "spacing": 50
   }
   
