@@ -1,6 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Global Energy Substitution versus Time",
+  "title": {
+    "text": "Global Energy Substitution versus Time",
+    "subtitle": "To see get exact values, hover over the area. Choose a source is legend to filter out others.",
+    "subtitleColor": "gray",
+    "fontSize": 20,
+    "fontWeight": "bold"
+  },
   "width": "container",
   "height": 400,
   "data": {
@@ -58,7 +64,8 @@
             "scheme": "dark2"
           },
           "legend": {
-            "orient": "bottom"
+            "orient": "bottom",
+            "columns": 5 
           }
         },
         "opacity": {
@@ -96,33 +103,14 @@
           "datum": {"year": 1900}, 
           "type": "temporal"
         }
-      },
-      "color": {
-        "value": "red"
-      },
-      "size": {
-        "value": 2
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "dx": 140,
-        "dy": 0,
-        "fontSize": 12
-      },
+      "mark": "rule",
       "encoding": {
         "x": {
-          "datum": "1850-01-01",
+          "datum": {"year": 1960}, 
           "type": "temporal"
-        },
-        "y": {
-          "datum": 60000,
-          "type": "quantitative"
-        },
-        "text": {
-          "value": "In the 19th century, traditional biomass"
         }
       }
     },
@@ -130,21 +118,21 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "dx": 140,
+        "dx": 100,
         "dy": 0,
-        "fontSize": 12
+        "fontSize": 15
       },
       "encoding": {
         "x": {
-          "datum": "1850-01-01",
+          "datum": "1890-01-01",
           "type": "temporal"
         },
         "y": {
-          "datum": 53000,
+          "datum": 100000,
           "type": "quantitative"
         },
         "text": {
-          "value": "was the primary source."
+          "value": "Traditional Biomass"
         }
       }
     },
@@ -152,24 +140,114 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "dx": 140,
+        "dx": 100,
         "dy": 0,
-        "fontSize": 12
+        "fontSize": 15
       },
       "encoding": {
         "x": {
-          "datum": "1850-01-01",
+          "datum": "1890-01-01",
           "type": "temporal"
         },
         "y": {
-          "datum": 46000,
+          "datum": 90000,
           "type": "quantitative"
         },
         "text": {
-          "value": "However, coal use increased slowly over time."
+          "value": "Dominance (Pre-1900)"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 295,
+        "dy": 0,
+        "fontSize": 15
+      },
+      "encoding": {
+        "x": {
+          "datum": "2000-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 150000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "Industrialization"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 295,
+        "dy": 0,
+        "fontSize": 15
+      },
+      "encoding": {
+        "x": {
+          "datum": "1890-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 140000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "(1900-1960)"
+        }
+      }
+    },
+    {
+      "mark": {
+      "type": "text",
+      "align": "center",
+      "dx": 430,
+      "dy": 0,
+      "fontSize": 15
+      },
+      "encoding": {
+        "x": {
+          "datum": "2000-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 195000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "Modern Energy"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "dx": 430,
+        "dy": 0,
+        "fontSize": 15
+      },
+      "encoding": {
+        "x": {
+          "datum": "1890-01-01",
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 185000,
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "Mix (Post-1960)"
         }
       }
     }
-  ]
+  ],
+  "config": {
+    "style": {"cell": {"stroke": "transparent"}}
+  }
 }
-  

@@ -1,7 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Primary Energy Consumption",
+    "subtitle": "To see get exact values, Hover over a country. Choose the year using slider to see values from that time",
+    "subtitleColor": "gray",
+    "fontSize": 20,
+    "fontWeight": "bold"
+  },
   "width": "container",
-  "height": 600,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/JDan0036/FIT3179/refs/heads/main/Assignment/js/ne_110m_admin_0_countries.json",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
@@ -115,8 +122,7 @@
           "field": "primary_energy_consumption",
           "type": "quantitative",
           "scale": {
-            "type": "threshold",
-            "domain": [0,1,2,4,8,16,32,64],
+            "type": "log",
             "range": [
               "#FFFFCC",
               "#C7E9B4",
@@ -134,10 +140,13 @@
           {
             "field": "primary_energy_consumption",
             "type": "quantitative",
-            "title": "Energy Consumption (TWh)"
+            "title": "Energy Consumption per 100K population (TWh)"
           }
         ]
       }
     }
-  ]
+  ],
+  "config": {
+    "style": {"cell": {"stroke": "transparent"}}
+  }
 }

@@ -70,7 +70,7 @@
         }
       },
       {
-        "title": "Change in CO₂ Emissions (Red: Loss, White: Near 0, Blue: Gain)",
+        "title": "Change in CO₂ Emissions ",
         "height": 250,
         "width": 300,
         "data": {

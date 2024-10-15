@@ -42,36 +42,39 @@
 
     <!-- Card 1: Primary Energy Consumption 2021 -->
     <div class="pure-u-1 card">
-      <h2>Explaining the Global Primary Energy Consumption for 2021</h2>
-      <p>This visualization highlights global energy consumption in 2021, measured in terawatt-hours (TWh). Countries are color-coded, with darker shades of purple representing higher energy usage and lighter shades indicating lower consumption.</p>
+      <h2>Global Energy Demand: Insights into Primary Consumption</h2>
+      <p>An essential indicator of a country's energy demand is its total consumption, measured in <b>terawatt-hours (TWh)</b>. From 1985 to 2021, global primary energy consumption has shifted dramatically, reflecting changes in <b>industrial growth, population dynamics, and the adoption of diverse energy sources</b>.</p>
 
       <div class="vis-container" id="vis1" style="width: 100%; height: auto; margin: auto"></div>
-
-      <h3>Key Insights</h3>
-      <ul>
-        <li><strong>High Energy Consumers:</strong> Countries like the United States, China, and Russia show the highest energy consumption, driven by industrial activity and large populations.</li>
-        <li><strong>Moderate Consumption:</strong> Nations in Europe, such as Germany and the UK, consume significant energy but not as much as the top global consumers.</li>
-        <li><strong>Low Energy Consumers:</strong> Many African, Southeast Asian, and South American countries have much lower energy consumption due to smaller populations and less industrial activity.</li>
-      </ul>
+      <br><br>
+      <hr>
+      <footer style="text-align: right;">
+        Source: <a href="https://ourworldindata.org/grapher/primary-energy-cons?tab=table" target="_blank">Primary Energy Consumption by Source</a> and <a href="https://ourworldindata.org/grapher/population?tab=table&time=1976..latest" target="_blank">Population</a> by Our World in Data
+      </footer>
     </div>
     
 
     <!-- Card 2: Energy Substitution Over Time -->
     <div class="pure-u-1 card">
       <h2>Explaining Global Energy Substitution Over Time</h2>
-      <p>This area chart visualizes the global shift in energy sources from the 19th century to 2023. It highlights the growth and substitution of various energy types over time, measured in terawatt-hours (TWh). By clicking on the legend, you can filter specific energy sources to focus on the ones you're most interested in.</p>
+      <p>Global energy substitution is the process in which various energy sources have been replaced over time, influenced by <b>advancements in technology, availability of resources,</b> and <b>evolving societal demands</b></p>
 
-      <div class="vis-container" id="vis2" style="width: 100%; height: auto; margin: auto"></div>
+      <div class="flex-container" style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div class="vis-container" id="vis2" style="flex: 70%; height: auto; margin-right: 20px;"></div>
 
-      <h3>Key Insights</h3>
-      <ul>
-        <li><strong>Traditional Biomass Dominance (Pre-1900):</strong> In the early years, traditional biomass, such as wood, was the dominant energy source. Coal began to gain traction slowly during the late 1800s.</li>
-        <li><strong>Industrialization Era (1900-1960):</strong> The use of coal grew significantly during the early 20th century as industrialization spread globally, with oil and gas joining the mix by mid-century.</li>
-        <li><strong>Modern Energy Mix (Post-1960):</strong> Post-1960 saw rapid growth in oil and gas usage, while nuclear energy emerged in the 1970s. In recent decades, renewable sources like wind, solar, and biofuels have seen substantial growth.</li>
-      </ul>
+        <div class="text-container" style="flex: 30%;">
+          <h3>Key Insights</h3>
+          <ul>
+            <li><strong>Traditional Biomass Dominance (Pre-1900):</strong> In the early years, traditional biomass, such as wood, was the dominant energy source. Coal began to gain traction slowly during the late 1800s.</li>
+            <li><strong>Industrialization Era (1900-1960):</strong> The use of coal grew significantly during the early 20th century as industrialization spread globally, with oil and gas joining the mix by mid-century.</li>
+            <li><strong>Modern Energy Mix (Post-1960):</strong> Post-1960 saw rapid growth in oil and gas usage, while nuclear energy emerged in the 1970s. In recent decades, renewable sources like wind, solar, and biofuels have seen substantial growth.</li>
+          </ul>
+        </div>
+      </div>
+      <br><br>
       <hr>
       <footer style="text-align: right;">
-        Source: <a href="https://ourworldindata.org/grapher/primary-energy-cons?tab=table" target="_blank">Primary Energy Consumption by Source</a> by Our World in Data
+        Source: <a href="https://ourworldindata.org/grapher/global-energy-substitution?tab=table&time=earliest..2023" target="_blank">Global primary energy consumption by source</a> by Our World in Data
       </footer>
     </div>
 
@@ -81,6 +84,7 @@
       <p>From 1980 to 2023, the ranking of countries around the world in terms of renewable energy consumption has fluctuated, reflecting global shifts in energy policies, resource management, and technological advancements. By examining how different nations rise and fall in these rankings, we gain valuable insights into their evolving commitment to renewable energy and how their strategies compare on a global scale, highlighting key trends in the transition to more sustainable energy sources.</p>
 
       <div class="vis-container" id="vis3" style="width: 100%; height: auto; margin: auto"></div>
+      <br><br>
       <hr>
       <footer style="text-align: right;">
         Source: <a href="https://ourworldindata.org/grapher/energy-consumption-by-source-and-country?tab=table&country=~MYS" target="_blank">Energy Consumption by source</a> by Our World in Data
@@ -90,12 +94,13 @@
     <!-- Card 4: CO2 Emissions Over Time -->
     <div class="pure-u-1 card">
       <h2>Explaining CO2 Emissions Over Time</h2>
-      <p>This area chart visualizes the global shift in energy sources from the 19th century to 2023. It highlights the growth and substitution of various energy types over time, measured in terawatt-hours (TWh). By clicking on the legend, you can filter specific energy sources to focus on the ones you're most interested in.</p>
+      <p>Explaining CO₂ emissions over time is essential for understanding how global energy consumption patterns have evolved and how they relate to <b>climate change</b>. CO₂ emissions are primarily the result of burning <b>fossil fuels</b>—such as <b>coal, oil, and natural gas</b>—for energy production, transportation, and industrial activities. </p>
 
       <div class="vis-container" id="vis4" style="width: 100%; height: auto; margin: auto"></div>
+      <br><br>
       <hr>
       <footer style="text-align: right;">
-        Source: <a href="https://ourworldindata.org/grapher/co-emissions-per-capita?tab=table" target="_blank">Per capita CO₂ emissions, 2022</a> by Our World in Data
+        Source: <a href="https://ourworldindata.org/grapher/co-emissions-per-capita?tab=table" target="_blank">Per capita CO₂ emissions</a> by Our World in Data
       </footer>
     </div>
 
@@ -104,10 +109,11 @@
     <div class="pure-u-1 card small-font">
       <p>This visualization is created by Jobin Mathew Dan (32871953). The datasource is:
         <ol type="1">
-          <li><a href="https://ourworldindata.org/grapher/global-energy-substitution?tab=table&time=earliest..2023" target="_blank">Global primary energy consumption by source</a> by Our World in Data.</li>
+          <li><a href="https://ourworldindata.org/grapher/population?tab=table&time=1976..latest" target="_blank">Population of each country</a> by Our World in Data.</li>
           <li><a href="https://ourworldindata.org/grapher/primary-energy-cons?tab=table" target="_blank">Primary Energy Consumption</a> by Our World in Data.</li>
+          <li><a href="https://ourworldindata.org/grapher/global-energy-substitution?tab=table&time=earliest..2023" target="_blank">Global primary energy consumption by source</a> by Our World in Data.</li>
           <li><a href="https://ourworldindata.org/grapher/energy-consumption-by-source-and-country?tab=table&country=~MYS" target="_blank">Energy Consumption by source</a> by Our World in Data.</li>
-          <li><a href="https://ourworldindata.org/grapher/co-emissions-per-capita?tab=table" target="_blank">Per capita CO₂ emissions, 2022</a> by Our World in Data.</li>
+          <li><a href="https://ourworldindata.org/grapher/co-emissions-per-capita?tab=table" target="_blank">Per capita CO₂ emissions</a> by Our World in Data.</li>
         </ol>
       </p>
     </div>
